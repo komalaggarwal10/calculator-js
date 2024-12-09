@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        const inputArray = [];
+
+        function storeInput() {
+            
+            const num = document.getElementById("num");
+
+            const value1 = num.value;
+            if (!isNaN(value1)) {
+                inputArray.push(parseInt(value1));
+                console.log(inputArray);
+
+                num.value = "";
+                document.getElementById("array").value = inputArray;
+
+            } else {
+                alert("Enter a valid number.");
+        
+            }
+
+        }
+        
+
+        function calculate(operation) {
+            if(inputArray.length===0){
+                alert("The array is empty. Please enter numbers first");
+                return;
+            }
+            var result;
+            
+
+            switch (operation) {
+                case 'add':
+                    result = add();
+                    break;
+                case 'subtract':
+                    result = subtract();
+                    break;
+                case 'mulltiply':
+                    result = mulltiply();
+                    break;
+                case 'divide':
+                    result = divide();
+                    break;
+                default:
+                    result = 0;
+            }
+
+            console.log(result);
+            document.getElementById("num").value = result;
+            document.getElementById("array").value = "";
+            // inputArray.length = 0; // Reset array after calculation
+        }
+        function add() {
+            var sum = 0;
+            for (var i = 0; i < inputArray.length; i++) {
+                sum += inputArray[i];
+            }
+            return sum;
+            
+        }
+
+        function subtract() {
+            var sub = inputArray[0];
+            for (var i = 1; i < inputArray.length; i++) {
+                sub -= inputArray[i];
+            }
+            return sub;
+            
+        }
+        function mulltiply() {
+            var product = inputArray[0];
+            for (var i = 1; i < inputArray.length; i++) {
+                product *= inputArray[i];
+            }
+            return product;
+            
+        }
+        function divide() {
+            var div = inputArray[0];
+            for (var i = 1; i < inputArray.length; i++) {
+                div /= inputArray[i];
+            }
+            return div;
+            
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1 class="head">Basic Calculator</h1>
+    <div class="content">
+        <form>
+            <input type="text" id="num" placeholder="Enter a number" name="num"><br>
+            <button type="button" id="submit" onclick="storeInput()">Submit</button><br>
+            <input type="text" id="array" placeholder="display array">
+        </form>
+    </div>
+    <div class="buttons">
+        <button id="addButton" onclick="calculate('add')">+</button>
+        <button id="subtractButton" onclick="calculate('subtract')">-</button>
+        <button id="multiplyButton" onclick="calculate('mulltiply')">*</button>
+        <button id="divideButton" onclick="calculate('divide')">/</button>
+    </div>
+
+</body>
+
+</html>

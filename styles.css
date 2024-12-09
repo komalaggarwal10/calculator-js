@@ -1,0 +1,28 @@
+body{
+    background-color: lightcyan;
+}
+.head{
+    text-align: center;
+}
+.content{
+    display: flex;
+    justify-content: center;
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    
+}
+.buttons > button{
+    border-radius: 40%;
+    margin: 10px;
+    padding:10px;
+    background-color: lightgreen;
+
+}
+#num, #array, #submit{
+    margin:10px;
+    padding:10px;
+
+}
+
